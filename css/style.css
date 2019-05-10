@@ -1,7 +1,17 @@
-body {}
+body {
+    float: left;
+}
 
 .container {
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     width: 70%;
+}
+
+.control {
+    float: left;
+}
+
+.col {
+    margin: auto 10%;
+    float: left;
 }

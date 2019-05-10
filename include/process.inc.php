@@ -30,13 +30,6 @@ if (isset($_POST["submit"])) {
                     break;
             }
         }
-
-        $r_count =
-        $i_count =
-        $a_count =
-        $s_count = 
-        $e_count =
-        $c_count = 0;
     }
 } else  {
     // do get
