@@ -1,17 +1,25 @@
+* {
+    margin: auto;
+}
+
 body {
-    float: left;
+    margin: auto;
 }
 
 .container {
-    margin: auto;
-    width: 70%;
+    margin: 0 auto;
+    width: 800px;
 }
 
 .control {
     float: left;
 }
 
-.col {
+.row {
     margin: auto 10%;
+}
+
+.col {
+    margin: 10px;
     float: left;
 }
