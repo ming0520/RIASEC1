@@ -1,7 +1,7 @@
 <?php
 
 Class User extends Dbh{
-    private $tableName =" users ";
+    private $tableName ="users";
     private $userDataArray = array();
 
     private $id;
@@ -19,6 +19,13 @@ Class User extends Dbh{
             $stmt = $this->connect()->prepare("SELECT * FROM users WHERE username=? AND password=?");
             $stmt->execute([$this->username,$this->password]);
             if($stmt->rowCount()){
+                while($row = $stmt->fetch()){
+                    $this->id = $row["id"];
+                    $this->first_name = $row["first_name"];
+                    $this->last_name = $row["last_name"];
+                    $this->email = $row["email"];
+                }
+                $this->set_session();
                 header("Location: question.php");
             }else{
                 echo "Invalid account";
@@ -26,4 +33,15 @@ Class User extends Dbh{
             
         }
     }
+
+public function set_session(){
+    $_SESSION["id"] = $this->id;
+    $_SESSION["username"] = $this->username;
+    $_SESSION["password"] = $this->password;
+    $_SESSION["first_name"] = $this->first_name;
+    $_SESSION["last_name"] = $this->last_name;
+    $_SESSION["email"] = $this->email;
 }
+
+}
+
