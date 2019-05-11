@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2019 at 07:41 PM
+-- Generation Time: May 11, 2019 at 05:57 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -25,44 +25,85 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `riasec`
+--
+
+CREATE TABLE `riasec` (
+  `id` int(11) NOT NULL,
+  `username` varchar(30) COLLATE utf8mb4_bin NOT NULL,
+  `r_count` int(11) NOT NULL,
+  `i_count` int(11) NOT NULL,
+  `a_count` int(11) NOT NULL,
+  `s_count` int(11) NOT NULL,
+  `e_count` int(11) NOT NULL,
+  `c_count` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `password` varchar(60) NOT NULL,
-  `first_name` varchar(30) NOT NULL,
-  `last_name` varchar(30) NOT NULL,
-  `email` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `username` varchar(30) COLLATE utf8mb4_bin NOT NULL,
+  `password` varchar(60) COLLATE utf8mb4_bin NOT NULL,
+  `first_name` varchar(30) COLLATE utf8mb4_bin NOT NULL,
+  `last_name` varchar(30) COLLATE utf8mb4_bin NOT NULL,
+  `email` varchar(60) COLLATE utf8mb4_bin NOT NULL,
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `email`) VALUES
-(1, 'admin', 'admin', 'Zhong Ming', 'Tan', 'admin@riasecqiup.tk');
+INSERT INTO `users` (`username`, `password`, `first_name`, `last_name`, `email`, `id`) VALUES
+('admin', 'admin', 'Zhong Ming', 'Tan', 'admin@riasecqiup.tk', 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `riasec`
+--
+ALTER TABLE `riasec`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `username` (`username`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT for table `riasec`
+--
+ALTER TABLE `riasec`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `riasec`
+--
+ALTER TABLE `riasec`
+  ADD CONSTRAINT `riasec_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
