@@ -1,10 +1,12 @@
 <?php 
+    session_start();
     include_once ("include/riasec.inc.php");
     include_once ("include/process.inc.php");
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,12 +14,26 @@
     <link rel="stylesheet" href="css/style.css">
     <title>RIASEC</title>
 </head>
+
+<div class="col">
+    <div class="user_pannel">
+        <p>Username: <?php echo $_SESSION["username"]; ?></p>
+        <p>Name: <?php echo $_SESSION["first_name"] . $_SESSION['last_name']; ?></p>
+        <p>E-mail: <?php echo $_SESSION["email"]; ?></p>
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+            <button type="submit" class="btn-danger btn-block btn-large" name="logout">Logout</button>
+        </form>
+    </div>
+</div>
+
 <body class="container">
-    <center><h1>RIASEC Test</h1> </center>   
-    <div class="row">
+
+    <center>
+        <h1>RIASEC Test</h1>
+    </center>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
         <div class="col">
-        <h1>Question</h1>
+            <h1>Question</h1>
             <div id="question-list">
                 <table border="1">
                     <?php
@@ -35,14 +51,15 @@
             </div>
             <br>
             <div class="control">
-                <button type="submit" name="submit" class ="btn btn-primary btn-block btn-large">Submit</button>
+                <button type="submit" name="submit" class="btn btn-primary btn-block btn-large">Submit</button>
             </div>
-         </div>
+        </div>
+        
         <div id="result" class="col">
-        <h1>Result</h1>
-        <h2>Top 3 Code</h2>
-        <h3>
-            <?php 
+            <h1>Result</h1>
+            <h2>Top 3 Code</h2>
+            <h3>
+                <?php 
                 $counter = 0;
                 foreach($riasec_count as $code => $value){
                     if($counter < 3){
@@ -51,8 +68,8 @@
                     $counter++;
                 }
             ?>
-        </h3>
-         <table border="1">
+            </h3>
+            <table border="1">
                 <thead>
                     <tr>
                         <td>Category</td>
@@ -89,10 +106,11 @@
         </div>
     </form>
     </div>
-    
 
-    
+
+
 </body>
+
 </html>
 
 <?php
