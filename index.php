@@ -24,7 +24,7 @@
 <body>
     <div class="login">
         <h1>Login</h1>
-        <p style="color = white;">username and password is admin, admin</p>
+        <p>username and password is admin, admin</p>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <input type="text" name="username" placeholder="Username" required="required" />
             <input type="password" name="password" placeholder="Password" required="required" />
