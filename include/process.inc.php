@@ -1,35 +1,38 @@
 <?php
-    $r_count =
-    $i_count =
-    $a_count =
-    $s_count = 
-    $e_count =
-    $c_count = 0;
+    $riasec_count = array(
+        'r' => 0,
+        'i' => 0,
+        'a' => 0,
+        's' => 0,
+        'e' => 0,
+        'c' => 0
+    );
 
 if (isset($_POST["submit"])) {
     if(!empty($_POST['check_answer'])) {
         foreach($_POST['check_answer'] as $answer){
             switch($answer){
                 case "r":
-                    $r_count++;
+                    $riasec_count['r']++;
                     break;
                 case "i":
-                    $i_count++;
+                    $riasec_count['i']++;
                     break;
                 case "a":
-                    $a_count++;
+                    $riasec_count['a']++;
                     break;
                 case "s":
-                    $s_count++;
+                    $riasec_count['s']++;
                     break;
                 case "e":
-                    $e_count++;
+                    $riasec_count['e']++;
                     break;
                 case "c";
-                    $c_count++;
+                    $riasec_count['c']++;
                     break;
             }
         }
+        arsort($riasec_count);
     }
 } else  {
     // do get
