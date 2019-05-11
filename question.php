@@ -35,12 +35,24 @@
             </div>
             <br>
             <div class="control">
-                <button type="submit" name="submit">Submit</button>
+                <button type="submit" name="submit" class ="btn btn-primary btn-block btn-large">Submit</button>
             </div>
          </div>
         <div id="result" class="col">
         <h1>Result</h1>
-            <table border="1">
+        <h2>Top 3 Code</h2>
+        <h3>
+            <?php 
+                $counter = 0;
+                foreach($riasec_count as $code => $value){
+                    if($counter < 3){
+                        echo ucfirst($code) . '&emsp;';
+                    }
+                    $counter++;
+                }
+            ?>
+        </h3>
+         <table border="1">
                 <thead>
                     <tr>
                         <td>Category</td>
@@ -50,27 +62,27 @@
                 <tbody>
                     <tr>
                         <td>R</td>
-                        <td><?php echo $r_count ?></td>
+                        <td><?php echo $riasec_count['r'] ?></td>
                     </tr>
                     <tr>
                         <td>I</td>
-                        <td><?php echo $i_count ?></td>
+                        <td><?php echo $riasec_count['i'] ?></td>
                     </tr>
                     <tr>
                         <td>A</td>
-                        <td><?php echo $a_count ?></td>
+                        <td><?php echo $riasec_count['a'] ?></td>
                     </tr>
                     <tr>
                         <td>S</td>
-                        <td><?php echo $s_count ?></td>
+                        <td><?php echo $riasec_count['s'] ?></td>
                     </tr>
                     <tr>
                         <td>E</td>
-                        <td><?php echo $e_count ?></td>
+                        <td><?php echo $riasec_count['e'] ?></td>
                     </tr>
                     <tr>
                         <td>C</td>
-                        <td><?php echo $c_count ?></td>
+                        <td><?php echo $riasec_count['c'] ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -85,9 +97,11 @@
 
 <?php
 
-$r_count =
-    $i_count =
-    $a_count =
-    $s_count = 
-    $e_count =
-    $c_count = 0;
+$riasec_count = array(
+    'r' => 0,
+    'i' => 0,
+    'a' => 0,
+    's' => 0,
+    'e' => 0,
+    'c' => 0
+);
