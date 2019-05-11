@@ -144,6 +144,12 @@ body {
     text-align: center;
 }
 
+p {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+}
+
 input {
     width: 100%;
     margin-bottom: 10px;
