@@ -1,4 +1,6 @@
 <?php
+    include_once "Dbh.inc.php";
+
     $riasec_count = array(
         'r' => 0,
         'i' => 0,
@@ -32,7 +34,39 @@ if (isset($_POST["submit"])) {
                     break;
             }
         }
+        $dbh = new Dbh();
+        $usr = new User();
+        $stmt = $dbh->connect()->prepare("SELECT * FROM riasec WHERE username=?");
+        $stmt->execute([$_SESSION['username']]);
+        if($stmt->rowCount()){
+            $stmt = $dbh->connect()->prepare("UPDATE riasec SET
+            r_count=?, i_count=?, a_count=?, s_count=?, e_count=?, c_count=?
+            WHERE username=?");
+            $stmt->execute([
+                $riasec_count['r'],
+                $riasec_count['i'],
+                $riasec_count['a'],
+                $riasec_count['s'],
+                $riasec_count['e'],
+                $riasec_count['c'],
+                $_SESSION['username']                
+            ]);
+
+        }else{
+            $stmt = $dbh->connect()->prepare("INSERT INTO riasec SET
+            r_count=?, i_count=?, a_count=?, s_count=?, e_count=?, c_count=?, username=?");
+            $stmt->execute([
+                $riasec_count['r'],
+                $riasec_count['i'],
+                $riasec_count['a'],
+                $riasec_count['s'],
+                $riasec_count['e'],
+                $riasec_count['c'],
+                $_SESSION['username']
+            ]);
+        }
         arsort($riasec_count);
+        $usr->getRiasec();
     }
 } else  {
     // do get
