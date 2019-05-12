@@ -35,6 +35,7 @@
 
         $user = new User();
         $user->register($userDataArray);
+        header("Location: index.php");
     }
 ?>
 <!DOCTYPE html>

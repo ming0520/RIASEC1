@@ -103,7 +103,7 @@ public function register($userDataArray = array()){
                 $userDataArray["qualification"],
                 $userDataArray["yoc"]
             ]);
-            alert("Register successfully!");
+            $this->alert("Register successfully!");
             header("Location: index.php");
         }
     }
