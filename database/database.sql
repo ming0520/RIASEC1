@@ -23,10 +23,10 @@ CREATE TABLE Users(
         e_count int NOT NULL,
         c_count int NOT NULL
     );
-
+-- This is for reset the id column
     ALTER TABLE users DROP COLUMN id
     ALTER TABLE users ADD id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT
-
+-- This is for add new column in users table
    ALTER TABLE users
   ADD identity varchar(30) NOT NULL,
   ADD age int(2) NOT NULL,
