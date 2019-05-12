@@ -3,12 +3,11 @@
 Class User extends Dbh{
     private $tableName ="users";
     private $userDataArray = array();
+    private $riasec = array();
 
     private $id;
     private $username;
     private $password;
-    private $first_name;
-    private $last_name;
     private $email;
 
     public function login($userDataArray = array()){
@@ -26,13 +25,42 @@ Class User extends Dbh{
                     $this->email = $row["email"];
                 }
                 $this->set_session();
+                $this->getRiasec();
                 header("Location: question.php");
             }else{
-                echo "Invalid account";
+                $this->alert("Invalid acoount!");
             }
             
         }
     }
+
+public function getRiasec(){
+    $stmt = $this->connect()->prepare("SELECT * FROM riasec WHERE username=?");
+    $stmt->execute([$_SESSION["username"]]);
+    if($stmt->rowCount()){
+        while($row = $stmt->fetch()){
+            $_SESSION["riasec"] = array(
+                'r' => $row['r_count'],
+                'i' => $row['i_count'],
+                'a' => $row['a_count'],
+                's' => $row['s_count'],
+                'e' => $row['e_count'],
+                'c' => $row['c_count']
+            );
+        }
+        arsort($_SESSION["riasec"]);
+        $this->riasec = $_SESSION["riasec"];
+    }else{
+        $_SESSION["riasec"] = array(
+            'r' => 0,
+            'i' => 0,
+            'a' => 0,
+            's' => 0,
+            'e' => 0,
+            'c' => 0
+        );
+    }
+}
 
 public function set_session(){
     $_SESSION["id"] = $this->id;
@@ -41,6 +69,44 @@ public function set_session(){
     $_SESSION["first_name"] = $this->first_name;
     $_SESSION["last_name"] = $this->last_name;
     $_SESSION["email"] = $this->email;
+}
+
+public function show($userDataArray = array()){
+    $this->userDataArray = $userDataArray;
+    echo "<pre>" ; var_dump ($this->userDataArray) ; echo "</pre>";
+}
+
+public function alert($message){
+    echo "<script type='text/javascript'>alert('$message');</script>";
+}
+
+public function register($userDataArray = array()){
+    if(!empty($userDataArray)){
+        $stmt = $this->connect()->prepare("SELECT * FROM users WHERE username=?");
+        $stmt->execute([$userDataArray["username"]]);
+        if($stmt->rowCount()){
+            $this->alert("Username existed! Please try a new username");
+        }else{
+            $stmt = $this->connect()->prepare("INSERT INTO users SET 
+            first_name=?,last_name=?,identity=?,age=?,email=?,
+            phone_number=?,username=?,password=?,ethnicity=?,qualification=?,yoc=?");
+            $stmt->execute([
+                $userDataArray["first_name"],
+                $userDataArray["last_name"],
+                $userDataArray["identity"],
+                $userDataArray["age"],
+                $userDataArray["email"],
+                $userDataArray["phone_number"],
+                $userDataArray["username"],
+                $userDataArray["password"],
+                $userDataArray["ethnicity"],
+                $userDataArray["qualification"],
+                $userDataArray["yoc"]
+            ]);
+            alert("Register successfully!");
+            header("Location: index.php");
+        }
+    }
 }
 
 }
