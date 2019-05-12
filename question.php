@@ -1,7 +1,14 @@
 <?php 
     session_start();
+    include_once("navbar.php");
+    include_once("include/Dbh.inc.php");
+    include_once("include/User.inc.php");
     include_once ("include/riasec.inc.php");
     include_once ("include/process.inc.php");
+
+    if(empty($_SESSION["username"])){
+        header("Location: index.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -14,19 +21,27 @@
     <link rel="stylesheet" href="css/style.css">
     <title>RIASEC</title>
 </head>
-
-<div class="col">
+<div class="">
     <div class="user_pannel">
         <p>Username: <?php echo $_SESSION["username"]; ?></p>
         <p>Name: <?php echo $_SESSION["first_name"] . $_SESSION['last_name']; ?></p>
         <p>E-mail: <?php echo $_SESSION["email"]; ?></p>
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <p>Top 3 Code: <?php 
+            $counter = 0;
+            foreach($_SESSION['riasec'] as $code => $value){
+                if($counter < 3){
+                    echo ucfirst($code) . '&emsp;';
+                }
+                $counter++;
+            }
+        ?></p>
+        <form method="post" action="logout.php">
             <button type="submit" class="btn-danger btn-block btn-large" name="logout">Logout</button>
         </form>
     </div>
 </div>
 
-<body class="container">
+<body class="container-form">
 
     <center>
         <h1>RIASEC Test</h1>
