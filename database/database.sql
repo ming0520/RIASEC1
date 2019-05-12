@@ -26,3 +26,11 @@ CREATE TABLE Users(
 
     ALTER TABLE users DROP COLUMN id
     ALTER TABLE users ADD id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT
+
+   ALTER TABLE users
+  ADD identity varchar(30) NOT NULL,
+  ADD age int(2) NOT NULL,
+  ADD phone_number varchar(20) NOT NULL,
+  ADD ethnicity varchar(20) NOT NULL,
+  ADD qualification varchar(60) NOT NULL,
+  ADD yoc int(4) NOT NULL;

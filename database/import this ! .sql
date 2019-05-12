@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2019 at 05:57 AM
+-- Generation Time: May 12, 2019 at 06:29 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -39,6 +39,13 @@ CREATE TABLE `riasec` (
   `c_count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
+--
+-- Dumping data for table `riasec`
+--
+
+INSERT INTO `riasec` (`id`, `username`, `r_count`, `i_count`, `a_count`, `s_count`, `e_count`, `c_count`) VALUES
+(1, 'admin', 3, 3, 3, 3, 4, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -51,15 +58,22 @@ CREATE TABLE `users` (
   `first_name` varchar(30) COLLATE utf8mb4_bin NOT NULL,
   `last_name` varchar(30) COLLATE utf8mb4_bin NOT NULL,
   `email` varchar(60) COLLATE utf8mb4_bin NOT NULL,
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `identity` varchar(30) COLLATE utf8mb4_bin NOT NULL,
+  `age` int(2) NOT NULL,
+  `phone_number` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `ethnicity` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `qualification` varchar(60) COLLATE utf8mb4_bin NOT NULL,
+  `yoc` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`username`, `password`, `first_name`, `last_name`, `email`, `id`) VALUES
-('admin', 'admin', 'Zhong Ming', 'Tan', 'admin@riasecqiup.tk', 1);
+INSERT INTO `users` (`username`, `password`, `first_name`, `last_name`, `email`, `id`, `identity`, `age`, `phone_number`, `ethnicity`, `qualification`, `yoc`) VALUES
+('admin', 'admin', 'Zhong Ming', 'Tan', 'admin@riasecqiup.tk', 1, '', 0, '', '', '', 0),
+('seb123', 'seb321', 'Ho', 'Jin Heng', 'seb@mail.com', 2, 'IC001', 13, '0123456789', 'Chinese', 'Foundation', 2017);
 
 --
 -- Indexes for dumped tables
@@ -87,13 +101,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `riasec`
 --
 ALTER TABLE `riasec`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
