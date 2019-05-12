@@ -17,14 +17,21 @@
       <li class="nav-item">
         <a class="nav-link" href="index.php">Login</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="register.php">Register</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="question.php">Test</a>
-      </li>
+      
+
+      <?php
+
+      $li = "<li class='nav-item'>
+              <a class='nav-link' href='register.php'>Register</a>
+            </li>";
+        if(!(isset($_SESSION['username']) && !empty($_SESSION['username']))){
+          print_r($li);
+        }else{
+          
+        }
+      ?>
     </ul>
   </div>
 </nav>
 
-<p style="color:white;">Please email to admin@riasec.cf</p>
+<p style="color:white;">Please email to mail2chock@gmail.com</p>
