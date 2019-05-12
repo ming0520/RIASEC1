@@ -26,3 +26,5 @@
     </ul>
   </div>
 </nav>
+
+<p style="color:white;">Please email to admin@riasec.cf</p>
