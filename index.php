@@ -1,7 +1,8 @@
 <?php
+    session_start();
+    include_once("navbar.php");
     include_once("include/Dbh.inc.php");
     include_once("include/User.inc.php");
-    session_start();
     $userDataArray = array();
     if(isset($_POST['submit'])){
         $userDataArray = array(
