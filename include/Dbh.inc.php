@@ -13,6 +13,11 @@ class Dbh {
         $this->password = "";
         $this->dbname = "riasec_test";
 
+        // $this->servername = "localhost";
+        // $this->username = "root";
+        // $this->password = "";
+        // $this->dbname = "riasec_test";
+
         $this->charset = 'utf8mb4';
 
         try {
