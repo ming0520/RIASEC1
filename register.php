@@ -1,4 +1,5 @@
 <?php
+//This is just a comment
     session_start();
     include_once("navbar.php");
     include_once("include/Dbh.inc.php");
