@@ -148,6 +148,7 @@ input {
 }
 
 body {
+    clear: inherit;
     margin: auto;
     width: 100%;
     height: 100%;
@@ -190,26 +191,31 @@ td {
     padding: 5px 10px;
 }
 
-.container {
+.container-form {
+    clear: both;
     margin: 0 auto;
     width: 800px;
 }
 
 .control {
+    clear: both;
     float: left;
 }
 
 .row {
+    clear: both;
     margin: auto 10%;
 }
 
 .col {
+    clear: both;
     margin: 10px;
     float: left;
 }
 
 .user_pannel {
-    left: 2%;
+    clear: both;
+    left: 0px;
     position: absolute;
     color: #fff;
     border: 3px double #092756;
@@ -218,6 +224,7 @@ td {
 
 @media only screen and (max-width: 1348px) {
     .user_pannel {
+        clear: both;
         position: relative;
         width: 100%;
     }
