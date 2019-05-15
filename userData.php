@@ -16,6 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="js/userData.js"></script>
     <title>RIASEC</title>
 </head>
 <div class="">
@@ -56,6 +58,7 @@
                 <td>S</td>
                 <td>E</td>
                 <td>C</td>
+                <td>Operation</td>
             </tr>
             <?php
                 $staff = new Staff();
@@ -64,26 +67,30 @@
                 $user_count = 1;
                 $string =" ";
                 foreach($user_array as $user){
-                    $string = "<form action='". $_SERVER['PHP_SELF']."' class='user'><tr><td>".
+                    $string = "<tr><form action='". $_SERVER['PHP_SELF']."' class='user'><td>".
                     $user_count . "</td> " . 
                     "<td>".$user['username'] .      " <input type = 'text' class='hidden'  value = '". $user['username']        ."' name = 'username' disabled" ."</td>".
-                    "<td>".$user['first_name'].     " <input type = 'text' class='hidden'  value = '". $user['first_name']      ."' name = 'first_name' " . "</td>".
-                    "<td>".$user['last_name'].      " <input type = 'text' class='hidden'  value = '". $user['last_name']       ."' name = 'last_name' " . "</td>".
-                    "<td>".$user['age'] .           " <input type = 'text' class='hidden'  value = '". $user['age']             ."' name = 'age' ". "</td>".
+                    "<td>".$user['first_name'].     " <input type = 'text' class='edit-user'  value = '". $user['first_name']      ."' name = 'first_name' " . "</td>".
+                    "<td>".$user['last_name'].      " <input type = 'text' class='edit-user'  value = '". $user['last_name']       ."' name = 'last_name' " . "</td>".
+                    "<td>".$user['age'] .           " <input type = 'text' class='edit-user'  value = '". $user['age']             ."' name = 'age' ". "</td>".
                     "<td>".$user['email'] .         " <input type = 'text' class='hidden'  value = '". $user['email']           ."' name = 'email disabled' ". "</td>".
-                    "<td>".$user['phone_number'] .  " <input type = 'text' class='hidden'  value = '". $user['phone_number']    ."' name = 'phone_number' ". "</td>".
-                    "<td>".$user['identity'] .      " <input type = 'text' class='hidden'  value = '". $user['identity']        ."' name = 'identity' ". "</td>".
-                    "<td>".$user['ethnicity'] .     " <input type = 'text' class='hidden'  value = '". $user['ethnicity']       ."' name = 'ethnicity' ". "</td>".
-                    "<td>".$user['qualification'] . " <input type = 'text' class='hidden'  value = '". $user['qualification']   ."' name = 'qualification' ". "</td>".
-                    "<td>".$user['yoc'] .           " <input type = 'text' class='hidden'  value = '". $user['yoc']             ."' name = 'yoc' ". "</td>".
+                    "<td>".$user['phone_number'] .  " <input type = 'text' class='edit-user'  value = '". $user['phone_number']    ."' name = 'phone_number' ". "</td>".
+                    "<td>".$user['identity'] .      " <input type = 'text' class='edit-user'  value = '". $user['identity']        ."' name = 'identity' ". "</td>".
+                    "<td>".$user['ethnicity'] .     " <input type = 'text' class='edit-user'  value = '". $user['ethnicity']       ."' name = 'ethnicity' ". "</td>".
+                    "<td>".$user['qualification'] . " <input type = 'text' class='edit-user'  value = '". $user['qualification']   ."' name = 'qualification' ". "</td>".
+                    "<td>".$user['yoc'] .           " <input type = 'text' class='edit-user'  value = '". $user['yoc']             ."' name = 'yoc' ". "</td>".
                     "<td>".$user['r_count'] . "</td>".
                     "<td>".$user['i_count'] . "</td>".
                     "<td>".$user['a_count'] . "</td>".
                     "<td>".$user['s_count'] . "</td>".
                     "<td>".$user['e_count'] . "</td>".
                     "<td>".$user['c_count'] . "</td>".
-                    "".
-                    "</tr></form>";
+                    "<td> 
+                            <button type='button' id='edit-btn' name='submit' class='edit-btn btn btn-primary btn-block btn-large'><span>Edit</span></button>
+                            <button type='button' id='del-btn' name='submit' class='del-btn btn-danger btn-block btn-large'>Delete</button>"
+                        .
+                    "</td>".
+                    "</form></tr>";
                     trim($string);
                     echo $string;
                     $user_count++;
@@ -113,6 +120,14 @@ input{
     -o-transition: box-shadow .5s ease;
     -ms-transition: box-shadow .5s ease;
     transition: box-shadow .5s ease;
+}
+
+.hidden{
+    display:none;
+}
+
+button{
+    margin:5px;
 }
 </style>
 
