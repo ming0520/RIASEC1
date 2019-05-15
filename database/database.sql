@@ -34,3 +34,19 @@ CREATE TABLE Users(
   ADD ethnicity varchar(20) NOT NULL,
   ADD qualification varchar(60) NOT NULL,
   ADD yoc int(4) NOT NULL;
+
+  -- This code is to create staff table
+  CREATE TABLE staff (
+      id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        username varchar(30) NOT NULL,
+        password varchar(60) NOT NULL,
+        first_name varchar(30) NOT NULL,
+        last_name varchar(30) NOT NULL,
+        phone_number varchar(20) NOT NULL,
+        email varchar(60) NOT NULL
+  );
+
+  --default account for marketing
+  INSERT INTO staff SET username='staff123', password='qiup123';
+
+select * FROM riasec a INNER JOIN users b on a.username = b. username WHERE 1;
