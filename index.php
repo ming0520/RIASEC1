@@ -5,6 +5,7 @@
     include_once("include/User.inc.php");
     if(isset($_SESSION["username"])){
         unset($_SESSION["username"]);  // where $_SESSION["nome"] is your own variable. if you do not have one use only this as follow **session_unset();**
+        unset($_SESSION["role"]);
         session_destroy();
         header("Location: index.php");
     }
