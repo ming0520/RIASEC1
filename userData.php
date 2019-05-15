@@ -65,7 +65,7 @@
         <p>Name: <?php echo $_SESSION["first_name"] . $_SESSION['last_name']; ?></p>
         <p>E-mail: <?php echo $_SESSION["email"]; ?></p>
         <p>Role: <?php echo $_SESSION['role']; ?></p>
-        <form method="post" action="logout.php">
+        <form method="post" action="staff_logout.php">
             <button type="submit" class="btn-danger btn-block btn-large" name="logout">Logout</button>
         </form>
     </div>
