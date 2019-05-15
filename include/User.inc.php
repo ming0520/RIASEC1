@@ -110,5 +110,42 @@ public function register($userDataArray = array()){
     }
 }
 
+public function update($userDataArray = array()){
+    if(!empty($userDataArray)){
+        $stmt = $this->connect()->prepare("UPDATE users SET 
+        first_name=?,last_name=?,identity=?,age=?,
+        phone_number=?,ethnicity=?,qualification=?,yoc=? WHERE
+        username=?");
+
+        $stmt->execute([
+            $userDataArray["first_name"],
+            $userDataArray["last_name"],
+            $userDataArray["identity"],
+            $userDataArray["age"],
+            $userDataArray["phone_number"],
+            $userDataArray["ethnicity"],
+            $userDataArray["qualification"],
+            $userDataArray["yoc"],
+            $userDataArray["username"]
+        ]);
+        $this->alert("Update successfully!");
+        header("Location: userData.php");
+    }else{
+        $this->alert("Update Failed!");
+    }
+    $this->alert("Update Failed!");
+}
+
+public function delete($username){
+    $stmt = $this->connect()->prepare("DELETE FROM users WHERE username=?");
+    $stmt->execute([$username]);
+    $stmt = $this->connect()->prepare("
+    ALTER TABLE users DROP COLUMN id;
+    ALTER TABLE users ADD id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT;");
+    $stmt->execute();
+    $this->alert("User deleted!");
+    header("Location: userData.php");
+}
+
 }
 
