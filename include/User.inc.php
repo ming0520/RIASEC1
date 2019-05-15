@@ -139,9 +139,13 @@ public function update($userDataArray = array()){
 public function delete($username){
     $stmt = $this->connect()->prepare("DELETE FROM users WHERE username=?");
     $stmt->execute([$username]);
+    $stmt = $this->connect()->prepare("DELETE FROM riasec WHERE username=?");
+    $stmt->execute([$username]);
     $stmt = $this->connect()->prepare("
     ALTER TABLE users DROP COLUMN id;
-    ALTER TABLE users ADD id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT;");
+    ALTER TABLE users ADD id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT;
+    ALTER TABLE riasec DROP COLUMN id;
+    ALTER TABLE riasec ADD id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT;");
     $stmt->execute();
     $this->alert("User deleted!");
     header("Location: userData.php");
