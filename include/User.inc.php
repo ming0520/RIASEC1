@@ -28,7 +28,7 @@ Class User extends Dbh{
                 $this->getRiasec();
                 header("Location: question.php");
             }else{
-                $this->alert("Invalid acoount!");
+                $this->alert("Invalid user account!");
             }
             
         }
@@ -69,6 +69,7 @@ public function set_session(){
     $_SESSION["first_name"] = $this->first_name;
     $_SESSION["last_name"] = $this->last_name;
     $_SESSION["email"] = $this->email;
+    $_SESSION["role"] = "user";
 }
 
 public function show($userDataArray = array()){
