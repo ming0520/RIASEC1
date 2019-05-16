@@ -34,4 +34,4 @@
   </div>
 </nav>
 
-<p style="color:white;">Copyright &copy; 2019 by Dr Chockalingam Letchumanan,Dr Shu Chin Lee, Ms Ying Mei Leong</p>
+<p style="color:white;">Copyright &copy; 2019 by Dr Chockalingam Letchumanan, Ms Ying Mei Leong,Dr Shu Chin Lee </p>
