@@ -34,4 +34,4 @@
   </div>
 </nav>
 
-<p style="color:white;">Please email to mail2chock@gmail.com</p>
+<p style="color:white;">Copyright &copy; 2019 by Dr Chockalingam Letchumanan,Dr Shu Chin Lee, Ms Ying Mei Leong</p>

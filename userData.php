@@ -78,10 +78,11 @@
     </center>
     <div class="col">
         <div class="">
-            <table border="1" style="font-size:0.9rem;">
+            <table border="1" style="font-size:0.9rem;" class=''>
             <tr>
                 <td>ID</td>
                 <td>Username</td>
+                <td>Password</td>
                 <td>First name</td>
                 <td>Last Name</td>
                 <td>Age</td>
@@ -109,6 +110,7 @@
                     $string = "<tr><form action='". $_SERVER['PHP_SELF']."' class='user' method='post'><td>".
                     $user_count . "</td> " . 
                     "<td>".$user['username'] .      " <input type = 'text' class='hidden'  value = '". $user['username']        ."' name = 'username' disabled" ."</td>".
+                    "<td>".$user['password'] .      " <input type = 'text' class='hidden'  value = '". $user['password']        ."' name = 'password' disabled" ."</td>".
                     "<td>".$user['first_name'].     " <input type = 'text' class='edit-user'  value = '". $user['first_name']      ."' name = 'first_name' required='required' " . "</td>".
                     "<td>".$user['last_name'].      " <input type = 'text' class='edit-user'  value = '". $user['last_name']       ."' name = 'last_name' required='required' " . "</td>".
                     "<td>".$user['age'] .           " <input type = 'text' class='edit-user'  value = '". $user['age']             ."' name = 'age' required='required' ". "</td>".
