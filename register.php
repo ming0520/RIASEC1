@@ -50,14 +50,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="js/form.js"></script>
     <link rel="stylesheet" href="css/gradient_form.css">
-	
-	<!--Google Recaptcha API-->
-	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <div class="login">
         <h1>Register</h1>
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="return validateGooRe()">
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <input type="text" name="first_name" placeholder="First Name" requried="required">
             <input type="text" name="last_name" placeholder="Last Name" requried="required">
             <input type="text" name="identity" placeholder="IC / Passport" required="required" />
@@ -104,28 +101,8 @@
                 print '</select>';
             ?> 
             </select>
-			
-			<center><div class="g-recaptcha" data-sitekey="6Le-P40UAAAAAC0hU6jBEIBT9nq0kHqD9PkB5PO4" data-callback="verifyCaptcha"></div></center>
-			<br>
             <button type="submit" class="btn btn-primary btn-block btn-large" name="submit">Register</button>
         </form>
-		
-		<!-- JS for Google Recaptcha -->
-		<script>
-			function validateGooRe() {
-				var response = grecaptcha.getResponse();
-				if(response.length == 0) {
-					alert("Please tick the recaptcha box.");
-					return false;
-				}
-				return false;
-			}
-			
-			function verifyCaptcha() {
-				document.getElementById("gBtn").addEventListener("submit", window.location = "<?php echo $loginURL ?>");
-			}
-		</script>
-			
         <div style="clear:both;"></div>
     </div>
 </body>
